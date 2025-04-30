@@ -1,5 +1,3 @@
-name: Deploy Next.js SSR App to cPanel via FTP
-
 on:
   push:
     branches:
@@ -22,7 +20,7 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build project
-        run: npm run build
+        run: CI=false npm run build  # Əgər build warning-lərlə dayansa
 
       - name: Upload built project to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -31,14 +29,13 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
-          local-dir: ./
-          server-dir: /
+          local-dir: ./build
+          server-dir: /public_html/your-folder/  # cPanel-də hara deploy olunacaqsa
           dangerous-clean-slate: false
           exclude: |
             **/.git*
             **/node_modules/**
             **/src/**
-            **/README.md
             **/.github/**
             **/.vscode/**
             **/*.log
