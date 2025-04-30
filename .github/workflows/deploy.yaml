@@ -29,8 +29,8 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
-          local-dir: ./build
-          server-dir: /public_html/your-folder/  # cPanel-də hara deploy olunacaqsa
+          local-dir: ./
+          server-dir: /
           dangerous-clean-slate: false
           exclude: |
             **/.git*
