@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/admin_ftp/build",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^35.4.0",
     "@ckeditor/ckeditor5-react": "^5.0.6",
