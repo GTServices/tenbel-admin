@@ -20,22 +20,15 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: CI=false npm run build  # Əgər build warning-lərlə dayansa
+        run: CI=false npm run build
 
-      - name: Upload built project to cPanel via FTP
+      - name: Upload ONLY build to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
-          local-dir: ./
-          server-dir: /
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/node_modules/**
-            **/src/**
-            **/.github/**
-            **/.vscode/**
-            **/*.log
+          local-dir: ./build
+          server-dir: /public_html/admin_ftp/  # və ya domenə uyğun yer
+          dangerous-clean-slate: true  # istəsəniz köhnələri silsin
