@@ -1,0 +1,40 @@
+.user {
+  padding: 50px 30px;
+}
+
+.sortable-image-list {
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.item {
+  width: 33%;
+  height: 150px;
+  position: relative;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.dragged {
+  box-sizing: border-box;
+  border: 1px solid #dedede;
+}
+
+.delete-image {
+  font-size: 16px;
+  color: red;
+  position: absolute;
+  top: 0;
+  right: -5px;
+  cursor: pointer;
+}
