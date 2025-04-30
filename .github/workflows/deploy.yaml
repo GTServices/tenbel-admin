@@ -29,6 +29,6 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
-          local-dir: ./build
+          local-dir: ./
           server-dir: /  # və ya domenə uyğun yer
           dangerous-clean-slate: true  # istəsəniz köhnələri silsin
