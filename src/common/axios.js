@@ -1,9 +1,13 @@
 import axios from "axios";
-import {setLoggedIn} from "../admin/login/slices/login";
+import {
+    setLoggedIn
+} from "../admin/login/slices/login";
 import store from "../store";
-import {toast} from "../routes";
+import {
+    toast
+} from "../routes";
 
-export const baseURL = "https://api2.webcoder.az/api";
+export const baseURL = "https://api.coder.az/api";
 // export const baseURL = "http://tenbel.test/api";
 const defaultHeaders = {
     "Content-type": "application/json",
@@ -21,16 +25,16 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
     async (config) => {
-        const localData = JSON.parse(localStorage.getItem("user"));
-        config.headers = {
-            ...config.headers,
-            Authorization: `Bearer ${localData.token}`,
-        };
-        return config;
-    },
-    (error) => {
-        Promise.reject(error);
-    }
+            const localData = JSON.parse(localStorage.getItem("user"));
+            config.headers = {
+                ...config.headers,
+                Authorization: `Bearer ${localData.token}`,
+            };
+            return config;
+        },
+        (error) => {
+            Promise.reject(error);
+        }
 );
 
 instance.interceptors.response.use(
