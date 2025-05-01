@@ -40,5 +40,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           local-dir: ./build/
-          server-dir: /public_html/       # Domenə uyğun dəyişə bilər
+          server-dir: /  # və ya domenə uyğun yer
           dangerous-clean-slate: true     # Build zamanı bütün köhnə faylları siləcək
