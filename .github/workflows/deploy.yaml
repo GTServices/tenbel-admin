@@ -1,3 +1,5 @@
+name: Deploy React App to cPanel
+
 on:
   push:
     branches:
@@ -22,6 +24,14 @@ jobs:
       - name: Build project
         run: CI=false npm run build
 
+      - name: Create .htaccess for React SPA (optional)
+        run: |
+          echo "Options -MultiViews" > build/.htaccess
+          echo "RewriteEngine On" >> build/.htaccess
+          echo "RewriteCond %{REQUEST_FILENAME} !-f" >> build/.htaccess
+          echo "RewriteCond %{REQUEST_FILENAME} !-d" >> build/.htaccess
+          echo "RewriteRule ^ index.html [QSA,L]" >> build/.htaccess
+
       - name: Upload ONLY build to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -30,5 +40,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           local-dir: ./build/
-          server-dir: /  # və ya domenə uyğun yer
-          dangerous-clean-slate: true  # istəsəniz köhnələri silsin
+          server-dir: /public_html/       # Domenə uyğun dəyişə bilər
+          dangerous-clean-slate: true     # Build zamanı bütün köhnə faylları siləcək
