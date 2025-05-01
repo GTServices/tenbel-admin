@@ -3,7 +3,7 @@ import {setLoggedIn} from "../admin/login/slices/login";
 import store from "../store";
 import {toast} from "../routes";
 
-export const baseURL = "https://api.coder.az/api";
+export const baseURL = "https://api2.webcoder.az/api";
 // export const baseURL = "http://tenbel.test/api";
 const defaultHeaders = {
     "Content-type": "application/json",
