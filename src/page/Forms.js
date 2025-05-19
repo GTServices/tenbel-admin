@@ -230,7 +230,7 @@ const Forms = () => {
                         <div className="col-2">
                             <label htmlFor="">Active</label>
                             <br/>
-                            <InputSwitch checked={item?.is_active} name={'is_active'} onChange={(e) => handleChange(e)}/>
+                            <InputSwitch checked={item?.is_active == 1 || item?.is_active === true || item?.is_active === "1"} name={'is_active'} onChange={(e) => handleChange(e)}/>
 
                             {errors?.is_active && <small id="username-help" className="p-error">
                                 {errors.is_active}
